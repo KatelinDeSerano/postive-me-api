@@ -15,6 +15,8 @@ const passport = require('passport');
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
+const { router: positiveMeRouter } = require('./positive-me');
+
 mongoose.Promise = global.Promise;
 
 const { PORT, DATABASE_URL } = require('./config');
