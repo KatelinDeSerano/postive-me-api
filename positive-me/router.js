@@ -43,4 +43,10 @@ router.get('/', (req, res) => {
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+router.delete('/:id', (req, res) => {
+    return Journal.findByIdAndRemove(req.params.id)
+        .then(() => res.status(204).send())
+        .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
 module.exports = {router};
