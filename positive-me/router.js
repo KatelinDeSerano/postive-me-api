@@ -19,15 +19,7 @@ router.post('/', jsonParser, (req, res) => {
         });
     }
 
-    return Journal.create({
-        negativeThought,
-        negativeFeeling,
-        negativeEvidence,
-        alternativeEvidence,
-        positiveThought,
-        positiveFeeling,
-        date 
-    })
+    return Journal.create(req.body)
     .then(journal => {
         return res.status(201).json(journal);
     })
