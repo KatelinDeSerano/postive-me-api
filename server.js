@@ -40,8 +40,8 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use('/api/users/', usersRouter);
-app.use('/api/auth/', authRouter);
+app.use('/users/', usersRouter);
+app.use('/auth/', authRouter);
 app.use('/positive-me/', positiveMeRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
