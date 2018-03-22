@@ -12,15 +12,12 @@ const JournalSchema = mongoose.Schema({
         type: String,
         required: true 
     },
-    negativeFeeling: {
+    emojiValue1: {
         type: Number,
         required: true
     },
-    negativeEvidence: {
-        type: String,
-        required: true
-    },
-    alternativeEvidence: {
+    
+    evidenceAgainstThought: {
         type: String,
         required: true
     },
@@ -28,12 +25,8 @@ const JournalSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    positiveFeeling: {
+    emojiValue2: {
         type: Number,
-        required: true
-    },
-    date: {
-        type: Date,
         required: true
     }
 });

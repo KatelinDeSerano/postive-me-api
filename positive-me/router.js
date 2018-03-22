@@ -6,8 +6,9 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 
 router.post('/', jsonParser, (req, res) => {
-    const requiredFields = ['negativeThought', 'negativeFeeling','negativeEvidence', 
-        'alternativeEvidence', 'positiveThought', 'positiveFeeling', 'date'];
+    console.log(req);
+    const requiredFields = ['user', 'negativeThought', 'emojiValue1', 
+        'evidenceAgainstThought', 'positiveThought', 'emojiValue2'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
     if (missingField) {
@@ -66,9 +67,9 @@ router.put('/:id', jsonParser, (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error'}));
   });
 
-router.get('/', (req, res) => {
-    return Journal.find()
-        .then(journals => res.json(journals.map(journal => journal)))
+router.get('/:user', (req, res) => {
+    return Journal.find({user: req.params.user})
+        .then(journals => res.json(journals))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
