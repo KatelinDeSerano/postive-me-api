@@ -35,8 +35,8 @@ router.post('/', jsonParser, (req, res) => {
 });
 
 router.put('/:id', jsonParser, (req, res) => {
-    const requiredFields = ['negativeThought', 'negativeFeeling','negativeEvidence', 
-        'alternativeEvidence', 'positiveThought', 'positiveFeeling', 'date'];
+    const requiredFields = ['negativeThought', 'negativeFeeling','evidenceAgainstThought', 
+        'positiveThought', 'positiveFeeling', 'date'];
     for (let i=0; i<requiredFields.length; i++) {
       const field = requiredFields[i];
       if (!(field in req.body)) {
@@ -45,10 +45,10 @@ router.put('/:id', jsonParser, (req, res) => {
         return res.status(400).send(message);
       }
     }
-    if (req.params.id !== req.body.id) {
+    if (req.params.id !== req.body._id) {
       const message = (
         `Request path id (${req.params.id}) and request body id `
-        `(${req.body.id}) must match`);
+        `(${req.body._id}) must match`);
       console.error(message);
       return res.status(400).send(message);
     }
@@ -56,8 +56,7 @@ router.put('/:id', jsonParser, (req, res) => {
       id: req.params.id,
       negativeThought: req.body.negativeThought,
       negativeFeeling: req.body.negativeFeeling,
-      negativeEvidence: req.body.negativeEvidence,
-      alternativeEvidence: req.body.alternativeEvidence,
+      evidenceAgainstThought: req.body.negativeEvidence,
       positiveThought: req.body.positiveThought,
       positiveFeeling: req.body.positiveFeeling,
       date: req.body.date

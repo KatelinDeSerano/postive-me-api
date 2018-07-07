@@ -4,9 +4,13 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const JournalSchema = mongoose.Schema({
+      
     user: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
     },
     negativeThought: {
         type: String,
