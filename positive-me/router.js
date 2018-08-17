@@ -68,6 +68,7 @@ router.put('/:id', jsonParser, (req, res) => {
 
 router.get('/:user', (req, res) => {
     return Journal.find({user: req.params.user})
+        .sort({date: -1})
         .then(journals => res.json(journals))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
