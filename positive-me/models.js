@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const JournalSchema = mongoose.Schema({
-      
+
     user: {
         type: String,
         required: true
@@ -14,13 +14,13 @@ const JournalSchema = mongoose.Schema({
     },
     negativeThought: {
         type: String,
-        required: true 
+        required: true
     },
     emojiValue1: {
         type: Number,
         required: true
     },
-    
+
     evidenceAgainstThought: {
         type: String,
         required: true
@@ -37,4 +37,4 @@ const JournalSchema = mongoose.Schema({
 
 const Journal = mongoose.model('Journal', JournalSchema);
 
-module.exports = {Journal};
+module.exports = { Journal };
