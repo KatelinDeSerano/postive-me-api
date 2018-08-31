@@ -29,7 +29,7 @@ describe('Auth endpoints', function () {
     return closeServer();
   });
 
-  beforeEach(function() {
+  beforeEach(function () {
     return User.hashPassword(password).then(password =>
       User.create({
         username,
@@ -65,7 +65,7 @@ describe('Auth endpoints', function () {
       return chai
         .request(app)
         .post('/auth/login')
-        .send({ username: 'wrongUsername', password })        
+        .send({ username: 'wrongUsername', password })
         .then(() =>
           expect.fail(null, null, 'Request should not succeed')
         )
