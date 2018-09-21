@@ -69,7 +69,6 @@ function runServer() {
       }
       server = app
         .listen(PORT, () => {
-          console.log(`Your app is listening on port ${PORT}`);
           resolve();
         })
         .on('error', err => {
@@ -83,7 +82,6 @@ function runServer() {
 function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
-      console.log('Closing server');
       server.close(err => {
         if (err) {
           return reject(err);
